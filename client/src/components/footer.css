@@ -1,0 +1,9 @@
+.footer{
+    background-color: rgb(152, 152, 152);
+    padding: 10px 0;
+}
+.footer h5{
+    color:white;
+    text-align: center;
+    font-weight: 300;
+}

@@ -1,0 +1,15 @@
+.catalog {
+    background-color: #fafafa;
+    padding-top: 15px;
+}
+
+.catalog h3{
+    text-align: center;
+    color: rgb(8, 73, 71);
+}
+
+/* .catalog .products{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+} */

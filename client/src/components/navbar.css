@@ -1,0 +1,10 @@
+.navbar{
+    background-color: gray;
+    margin-top: -22px;
+    padding: 10px;
+}
+.navbar h1{
+    color:white;
+    text-align: center;
+    background-color: gray;
+}
