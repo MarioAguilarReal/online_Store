@@ -4,13 +4,8 @@ import Product from './product';
 const Catalog =()=>{
     return (
         <div className='catalog'>
-            <h3>Check our amazing catalog below</h3>
+            <h3>All Properties</h3>
             <div className='products'>
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
                 <Product />
             </div>
         </div>
