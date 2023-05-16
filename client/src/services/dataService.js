@@ -60,5 +60,15 @@ let properties = [
         image: "https://marazulbucerias.com.mx/wp-content/uploads/2022/09/azotea3-1536x864.jpg"
     }
 ]
+class DataService{
 
-export default properties;
+    getProducts(){
+
+        return properties;
+
+        //
+    }
+
+
+}
+export default DataService;
