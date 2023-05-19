@@ -17,3 +17,6 @@ git push -u origin main
 
 # Push future times
 git push
+
+# @media querys
+#Media querys for different screen sizes

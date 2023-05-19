@@ -15,19 +15,21 @@ const Product = (props) => {
             <h3>{props.data.title}</h3>
             <div className='info'>
                 <div className='priceSection'>
-                    <p className='price'><FontAwesomeIcon className='icon' icon="fa-solid fa-dollar-sign" /> {props.data.price}/USD</p>
+                    <p className='price'>Price:<FontAwesomeIcon className='icon' icon="fa-solid fa-dollar-sign" /> {props.data.price.toFixed(2)}</p>
+
                 </div>
                 <div className='infoSection'>
-                    <p className='bed'><FontAwesomeIcon  className="icon" icon="fa-solid fa-bed" /> {props.data.bed}</p>
-                    <p className='bath'><FontAwesomeIcon className="icon"  icon="fa-solid fa-bath"/> {props.data.bath}</p>
-                    <p className='bed'><FontAwesomeIcon  className="icon" icon="fa-solid fa-ruler-combined" /> {props.data.sizeArea} m<sup>2</sup></p>
+                    <p className='bed'><FontAwesomeIcon  className="icon" icon="fa-solid fa-car" />: {props.data.engine}</p>
+                    <p className='bath'><FontAwesomeIcon className="icon"  icon="fa-solid fa-horse-head"/> hp: {props.data.hp}</p>
+                    <p className='bed'><FontAwesomeIcon  className="icon" icon="fa-solid fa-gear" /> lbft: {props.data.lbft}</p>
                 </div>
 
             </div>
 
             <QuantityPicker />
+                    <p className='price'>Total:<FontAwesomeIcon className='icon' icon="fa-solid fa-dollar-sign" /> {props.data.price.toFixed(2)}</p>
 
-            <button class="bt-addItem" onClick={handleAdd}>
+            <button className="bt-addItem" onClick={handleAdd}>
                 <FontAwesomeIcon icon="fa-solid fa-cart-plus" />
             </button>
         </div>
