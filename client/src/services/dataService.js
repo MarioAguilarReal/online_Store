@@ -60,23 +60,33 @@ let properties = [
         image: "ford-territory-2023.png"
     },
     {
-        _id: "123xz06",
-        title: 'BMW X3',
+        _id: "123xz07",
+        title: 'BMW Z4',
         price: 250000.00,
         engine: '4.0L',
         hp: 180,
         lbft: 120,
-        category: "SUV",
+        category: "Coupe",
         image: "bmw-x3-2023.webp"
     },
     {
-        _id: "123xz06",
-        title: 'BMW X6',
+        _id: "123xz08",
+        title: 'Porche 911',
         price: 250000.00,
         engine: '3.8L',
         hp: 180,
         lbft: 120,
-        category: "SUV",
+        category: "Coupe",
+        image: "bmw-x6-2023.webp"
+    },
+    {
+        _id: "123xz09",
+        title: 'Toyota Supra',
+        price: 250000.00,
+        engine: '3.8L',
+        hp: 180,
+        lbft: 120,
+        category: "Coupe",
         image: "bmw-x6-2023.webp"
     },
 ]

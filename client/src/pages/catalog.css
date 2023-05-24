@@ -24,15 +24,20 @@
 
 @media screen and (max-width: 768px) {
     .catalog .products{
+        /* background-color: red; */
         width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1024) {
+@media (max-width: 1024) and (min-width: 770px) {
     .catalog{
-        display: grid;
-        grid-template-columns: 45% 45% !important;
+        /* background-color: red; */
+        border: solid 10px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
     }
 
 }

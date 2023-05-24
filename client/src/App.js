@@ -1,5 +1,5 @@
 import './App.css';
-import Catalog from './components/catalog';
+import Catalog from './pages/catalog';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
 
