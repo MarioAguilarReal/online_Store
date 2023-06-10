@@ -32,7 +32,7 @@ const Catalog = () => {
         let list = [];
 
         allProducts.forEach(product => {
-            if(product.category == filter) list.push(product)
+            if(product.category === filter) list.push(product)
         });
         console.log(list);
         setProductsToDisplay(list);
@@ -41,7 +41,7 @@ const Catalog = () => {
     const clearFilter = () =>{
         setProductsToDisplay(allProducts);
     }
-
+    
     return (
         <div className='catalog'>
             <h3>All Vehicles</h3>

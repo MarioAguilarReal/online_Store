@@ -90,8 +90,12 @@ let properties = [
         image: "bmw-x6-2023.webp"
     },
 ]
-class DataService{
 
+let images = ['bmw-x6-2023.webp', 'honda-accord-2023.png']
+class DataService{
+    getImages(){
+        return images;
+    }
     getProducts(){
 
         return properties;

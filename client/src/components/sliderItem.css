@@ -1,0 +1,31 @@
+.container-slider{
+    /* background-color: rgba(57, 77, 108, 0.658); */
+    height: 90vh;
+    text-align: left;
+    display: flex;
+    position: relative;
+}
+
+.container-slider>.img-section{
+    flex: 3;
+}
+.container-slider>.img-section img{
+    object-fit: contain;
+    width: 100%;
+    object-position: center center;
+    height: 800px;
+}
+
+.container-slider>.img-slider{
+    padding-left: 100px;
+}
+
+.container-slider>.info-section{
+    padding-left: 40px;
+    position: relative;
+    top: 50%;
+    flex: 2;
+    text-align: left;
+    display: block;
+    
+}

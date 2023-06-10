@@ -44,7 +44,7 @@ def get_products():
     cursor = db.products.find({})
     for prod in cursor:
         products.append(fix_id(prod))
-    return json.dumps(products)
+    return json.dumps(f'{products}' )
 
 
 @app.post("/api/products")

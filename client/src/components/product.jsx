@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './product.css'
 import QuantityPicker from './quantityPicker'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import StoreContext from '../store/storeContext'
+
 
 
 const Product = (props) => {
     const [quantity, setQuantity] = useState(1);
+    const addToCart = useContext(StoreContext).addToCart
 
     const handleAdd = () => {
-        console.log(`Adding ${quantity} ${props.data.title} to cart`);
+        const prod2Cart = {...props.data, quantity};
+        addToCart(prod2Cart); //call the global state function
     }
 
     const onQuantityChange = (qty) => {

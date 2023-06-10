@@ -1,0 +1,47 @@
+.cart{
+    background-color: #e7e7e7;
+    padding: 30px 50px;
+    margin: 10px 20px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    caret-color: transparent;
+}
+
+.cart>.info-cart{
+    display: flex;
+}
+
+.cart>.info-cart>.products{
+    flex:7;
+}
+.cart>.info-cart>.pay{
+    flex: 3;
+    margin-left: 10px;
+    border:solid 1px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+.cart>.info-cart>.pay>.discount>.discount-form{
+    display: flex;
+}
+
+
+.no-prod{
+    padding-top: 100px;
+    height: 82.6vh;
+}
+
+.no-prod>h3{
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.no-prod>h4{
+    font-family: sans-serif;
+    font-size: 1em;
+}
+

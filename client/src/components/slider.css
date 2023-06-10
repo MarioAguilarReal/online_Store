@@ -1,0 +1,11 @@
+#slider{
+    min-height: 92vh;
+    background-image: url('../../public/slider-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#slider>.carousel-inner>#sliderItemMain>h1{
+    padding-top: 40vh;
+    padding-bottom: 20px;
+}

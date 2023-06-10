@@ -1,10 +1,25 @@
 .navbar{
-    background-color: gray;
+    background-color: rgb(22, 8, 97);
     margin-top: 0px;
     padding: 10px;
+    color:white
 }
 .navbar h1{
     color:white;
     text-align: center;
     background-color: gray;
+}
+
+.navbar .lbl-user{
+    color: #d3d3d3;
+    display:inline-block;
+    margin-left: 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    padding: 5px 5px 0 5px;
+
+}
+
+.navbar .lbl-user i{
+    
 }
