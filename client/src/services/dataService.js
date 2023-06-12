@@ -91,12 +91,28 @@ let properties = [
     },
 ]
 
-let images = ['bmw-x6-2023.webp', 'honda-accord-2023.png']
-class DataService{
-    getImages(){
-        return images;
+let services = [
+    {
+        title: "Parts Repairing",
+        icon: "fa-solid fa-wrench",
+        description: "Lorem ipsum dolor sit amet, consectetur adip occ sapien sed diam non pro pos"
+    },
+    {
+        title: "Vehicle Trade-In",
+        icon: "fa-solid fa-car-side",
+        description: "Lorem ipsum dolor sit amet, consectetur adip occ sapien sed diam non pro pos"
+    },
+    {
+        title: "Car Ispection",
+        icon: "fa-solid fa-user-gear",
+        description: "Lorem ipsum dolor sit amet, consectetur adip occ sapien sed diam non pro pos"
+    },
+]
+class DataService {
+    getServices() {
+        return services;
     }
-    getProducts(){
+    getProducts() {
 
         return properties;
 

@@ -1,15 +1,21 @@
 .admin {
-
+font-family: 'poppins';
 }
-
-.admin h1 {
+.admin>.hero{
+    background-color: rgba(24, 2, 146, 0.918);
+}
+.admin>.hero> h1{
     text-align: left;
     margin-right: -10px;
-    font-size: 70px;
-    color: #d6d6d6;
-    position: absolute;
-    left: -13px;
+    font-size: 89px;
+    color: #d6d6d68c;
+    /* position: absolute; */
+    margin-left: -15px;
     top: 46px;
+    font-family: 'poppins';
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 20px;
 }
 
 .admin .sections {
@@ -24,6 +30,10 @@
 
 .admin .sections .products {
     flex: 3;
+}
+.admin>.sections>.products>.form{
+    font-family: 'poppins';
+
 }
 
 .admin .sections .coupons {
@@ -43,19 +53,93 @@
     margin:10px 0;
     text-align: center;
 }
-.admin .sections .list-products{
-    border: solid 1px;
+
+.product-list>.info{
+    height: 75px;
+    margin: 10px 0 10px 0;
+    border: solid 1px ;
     display: flex;
+    border-radius: 15px;
 }
 
-.admin.sections.list-products.info{
-flex:6;
-}
-.admin .sections .list-products .info p{
-    margin:0;
-    padding: 0;
-}
-.admin .sections .list-products .img {
+.product-list>.info>.img-section{
     flex:2;
-    background-color: bkue;
+    /* background-color: blue; */
+}
+.product-list>.info>.img-section>img{
+    height: 75px;
+    width: 125px;
+    object-fit: contain;
+    object-position: center center;
+}
+
+
+.product-list>.info>.title-section{
+    flex:4;
+    /* background-color: red; */
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.product-list>.info>.title-section>h3{
+    font-size: 15px;
+}
+
+
+
+.product-list>.info>.info-section{
+    flex:6;
+    /* background-color: green; */
+    padding-top: 5px;
+    font-size: 15px;
+    text-align: justify;
+    /* display: flex; */
+}
+.product-list>.info>.info-section>.prop{
+    margin: 0;
+}
+
+.product-list>.info>.delete-section>{
+    flex:2;
+    /* background-color: blue; */
+}
+.product-list>.info>.delete-section>.btn{
+    margin-top: 25px;
+    color:white;
+    margin-right: 20px;
+}
+
+.product-list>.info>.delete-section>.btn>.icon{
+    color: white;
+
+}
+
+.coupon-code{
+    border: solid 1px;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    display: flex;
+    font-family: 'poppins';
+    vertical-align: middle;
+    height: 40px;
+}
+
+.coupon-code>.code{
+    flex:2;
+}
+
+
+
+.coupon-code>.discount{
+    flex:2;
+}
+
+
+
+.coupon-code>.delete{
+    flex:1;
+}
+.coupon-code>.delete>.btn>.icon{
+    color:white;
 }

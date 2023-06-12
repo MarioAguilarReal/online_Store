@@ -20,16 +20,17 @@ const Slider = () => {
     <div id="slider" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div id='sliderItemMain'className="carousel-item active">
-          <h1>Welcome to the best Dealer </h1>
-          <Link className='btn btn-primary' aria-current="page" to="/catalog">View Complete Catalog</Link>
+          <h2>Welcome to Mario's Dealer </h2>
+          <h3>Auto Dealer </h3>
+          <Link className='btn btn-sm button-slider' aria-current="page" to="/catalog">Explore Cars</Link> 
         </div>
         {allProducts.map(img => <SliderItem data={img} />)}
       </div>
-      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <button className="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Anterior</span>
       </button>
-      <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <button className="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Siguiente</span>
       </button>

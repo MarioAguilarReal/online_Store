@@ -8,7 +8,7 @@
 
 .productCart>.img-section{
     flex:2;
-    background-color: blue;
+    /* background-color: blue; */
 }
 .productCart>.img-section>img{
     height: 150px;
@@ -42,5 +42,5 @@
 
 .productCart>.total-delete-section{
     flex:3;
-    background-color: blue;
+    /* background-color: blue; */
 }

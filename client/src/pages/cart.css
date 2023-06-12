@@ -7,6 +7,7 @@
     border-radius: 10px;
 
     caret-color: transparent;
+    min-height: calc(100vh - 140px);
 }
 
 .cart>.info-cart{
@@ -45,3 +46,6 @@
     font-size: 1em;
 }
 
+.pay{
+    box-shadow: 2px 1px 10px 1px;
+}

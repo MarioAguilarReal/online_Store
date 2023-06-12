@@ -41,17 +41,23 @@ const Cart = (props) => {
                         {cart.map(product => <ProductCart key={product._id} data={product} />)}
                     </section>
                     <aside className='pay'>
-                        <h4>Products</h4>
-                        <h5>{getCartCount()}</h5>
+                        <h4><b>{getCartCount()}</b> Products on the Cart</h4>
+                        <hr/>
                         <h4>Total:</h4>
-                        <h5>{getTotal().toFixed(2)}</h5>
+                        <h5>$ {getTotal().toFixed(2)}</h5>
+                        <br/>
                         <div className='discount'>
-                                <label className='form-label'>Appley coupon code:</label>
+                                <label className='form-label'>Apply coupon code:</label>
                             <div className='discount-form'>
                                 <input className='form-control' type='text'></input>
                                 <button className='btn btn-sm btn-outline-primary'>Apply</button>
                             </div>
                         </div>
+                        <br/>
+                        <h4>Final Total:</h4>
+                        <h5>${getTotal().toFixed(2)}</h5>
+                        <br/>
+                        <button className='btn btn-xl btn-success'>Pay Now</button>
                     </aside>
 
                 </div>

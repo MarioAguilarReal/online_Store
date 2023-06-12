@@ -1,5 +1,5 @@
 .about{
-    min-height: 40rem;
+    min-height: calc(100vh - 110px);
 }
 
 .about h1{

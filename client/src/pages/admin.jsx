@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './admin.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Admin = () => {
     const [product, setProduct] = useState({});
@@ -62,23 +63,43 @@ const Admin = () => {
 
     return (
         <div className='admin'>
-            <h1>Store administration</h1>
+            <div className='hero'>
+                <h1>Store administration</h1>
+            </div>
             <div className='sections'>
                 <section className='products'>
                     <h3>Products</h3>
 
                     <div className='form'>
                         <div className='row'>
-                            <label className='form-label' >Title</label>
-                            <input onBlur={handleTextChange} name='title' type='text' className='form-control' />
+                            <div className='col'>
+                                <label className='form-label' >Title</label>
+                                <input onBlur={handleTextChange} name='title' type='text' className='form-control' />
+                            </div>
+                            <div className='col'>
+                                <label className='form-label' >Price</label>
+                                <input onBlur={handleTextChange} name='price' type='text' className='form-control' />
+                            </div>
                         </div>
                         <div className='row'>
-                            <label className='form-label' >Price</label>
-                            <input onBlur={handleTextChange} name='price' type='text' className='form-control' />
+                            <div className='col'>
+                                <label className='form-label' >Engine</label>
+                                <input onBlur={handleTextChange} name='engine' type='text' className='form-control' />
+                            </div>
+                            <div className='col'>
+                                <label className='form-label' >HorsePower</label>
+                                <input onBlur={handleTextChange} name='hp' type='text' className='form-control' />
+                            </div>
                         </div>
                         <div className='row'>
-                            <label className='form-label' >Category</label>
-                            <input onBlur={handleTextChange} name='category' type='text' className='form-control' />
+                            <div className='col'>
+                                <label className='form-label' >Torque</label>
+                                <input onBlur={handleTextChange} name='lbft' type='text' className='form-control' />
+                            </div>
+                            <div className='col'>
+                                <label className='form-label' >Category</label>
+                                <input onBlur={handleTextChange} name='category' type='text' className='form-control' />
+                            </div>
                         </div>
                         <div className='row'>
                             <label className='form-label' >Image</label>
@@ -96,8 +117,22 @@ const Admin = () => {
                     <ul className='product-list'>
                         {allProducts.map(product =>
                             <li className='info'>
-                                <span className='title'>{product.title}</span>
-                                <span className='price'>${product.price}</span>
+                                <div className='img-section'>
+                                    <img src={product.image} />
+                                </div>
+                                <div className='title-section'>
+                                    <h3>{product.title}</h3>
+                                    <span>Price: $ {product.price.toFixed(2)}</span>
+                                </div>
+                                <div className='info-section'>
+                                    <p className='prop'><FontAwesomeIcon className="icon" icon="fa-solid fa-car" /> engine: {product.engine} </p>
+                                    <p className='prop'><FontAwesomeIcon className="icon" icon="fa-solid fa-horse-head" /> hp: {product.hp} </p>
+                                    <p className='prop'><FontAwesomeIcon className="icon" icon="fa-solid fa-gear" /> lbft: {product.lbft} </p>
+                                </div>
+                                <div className='delete-section'>
+                                    <button className='btn btn-sm btn-danger'><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
+
+                                </div>
                             </li>
                         )}
                     </ul>
@@ -123,10 +158,17 @@ const Admin = () => {
                     </div>
                     <ul className='coupon-list'>
                         {allCoupons.map(coupon =>
-                            <li>
-                                <span className='code'>{coupon.code}</span>
-                                <span className='discount'>${coupon.discount.toFixed(2)}</span>
-                            </li>
+                            <div className='coupon-code'>
+                                <div className='code'>
+                                    <p className='code'>Code: {coupon.code}</p>
+                                </div>
+                                <div className='discount'>
+                                    <p className='discount'>Discount: {coupon.discount.toFixed(2)}%</p>
+                                </div>
+                                <div className='delete'>
+                                    <button className='btn btn-sm btn-danger'><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
+                                </div>
+                            </div>
                         )}
                     </ul>
                 </section>

@@ -1,6 +1,7 @@
-/* .qt-picker{
-
-} */
+.qt-picker{
+    margin-top: -12px;
+    margin-bottom: 0px;
+}
 
 .qt-picker button{
     margin: 5px 10px;

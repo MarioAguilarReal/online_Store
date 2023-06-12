@@ -32,25 +32,29 @@ const Catalog = () => {
         let list = [];
 
         allProducts.forEach(product => {
-            if(product.category === filter) list.push(product)
+            if (product.category === filter) list.push(product)
         });
         console.log(list);
         setProductsToDisplay(list);
     }
 
-    const clearFilter = () =>{
+    const clearFilter = () => {
         setProductsToDisplay(allProducts);
     }
-    
+
     return (
         <div className='catalog'>
-            <h3>All Vehicles</h3>
-            <h5>WE HAVE <b>{productsToDisplay.length}</b> CARS AVAILABLES FOR YOU</h5>
+            <div className='hero'>
+                <h3>CATALOG</h3>
+            </div>
 
             <div className='products'>
-                <h6>You can filter the cars with the category</h6>
-                <button onClick={clearFilter} className='btn-filter' >All Vehicles</button>
-                {categories.map(filter => <button className='btn-filter' key={filter} onClick={() =>funcFilter(filter)}>{filter}</button>)}<br />
+                <div className='filter'>
+                    <h5>WE HAVE <b>{productsToDisplay.length}</b> CARS AVAILABLES FOR YOU</h5>
+                    <h5>You can filter the cars with the category</h5>
+                    <button onClick={clearFilter} className='btn-filter' >All Vehicles</button>
+                    {categories.map(filter => <button className='btn-filter' key={filter} onClick={() => funcFilter(filter)}>{filter}</button>)}<br />
+                </div>
                 {productsToDisplay.map(prod => <Product key={prod._id} data={prod} />)}
             </div>
         </div>
