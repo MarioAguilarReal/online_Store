@@ -1,9 +1,17 @@
 import './productCart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useContext } from 'react';
+import StoreContext from '../store/storeContext';
+
 
 const ProductCart = props => {
     let product = props.data;
     let total = (product.price * product.quantity);
+    const removeFromCart  = useContext(StoreContext).removeFromCart
+
+    const handleDelete = () => {
+        removeFromCart(product._id);
+    }
     return (
         <div className='productCart'>
             <div className='img-section'>
@@ -21,7 +29,7 @@ const ProductCart = props => {
             <div className='total-delete-section'>
                 <p>Quantity:{product.quantity}</p>
                 <p>Total:<br/>${total}</p>
-                <button className='btn btn-sm btn-danger'><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"}/>Delete</button>
+                <button className='btn btn-sm btn-danger' onClick={handleDelete}><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"}/>Delete</button>
 
             </div>
         </div>

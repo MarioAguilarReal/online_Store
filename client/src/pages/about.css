@@ -1,11 +1,22 @@
 .about{
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - 139px);
 }
-
-.about h1{
-    text-align: center;
-    margin-bottom: 2rem;
-    color: gray;
+.about>.hero{
+    background-color: rgba(24, 2, 146, 0.918);
+}
+.about>.hero> h1{
+    text-align: left;
+    margin-right: -10px;
+    font-size: 89px;
+    color: #d6d6d68c;
+    /* position: absolute; */
+    left: -15px;
+    position: relative;
+    /* top: 46px; */
+    font-family: 'poppins';
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 20px;
 }
 .about h4{
     text-align: center;

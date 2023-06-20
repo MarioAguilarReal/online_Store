@@ -3,9 +3,10 @@ from flask import Flask, request
 from config import db
 from bson import ObjectId
 from flask import abort
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app) #warning: turn off security check
 
 @app.get('/')
 def home():
@@ -46,7 +47,7 @@ def get_products():
     cursor = db.products.find({})
     for prod in cursor:
         products.append(fix_id(prod))
-    return json.dumps(f'{products}' )
+    return json.dumps(products)
 
 
 @app.post("/api/products")
@@ -71,11 +72,23 @@ def save_product():
     if not isinstance(product['price'], (int, float)):
         return abort(400, 'Price should be a number')
 
-    if product['price'] > 0:
+    if product['price'] < 1:
         return abort(400, 'Price should be a greater than zero')
 
     db.products.insert_one(product)
     return json.dumps(fix_id(product))
+
+@app.delete("/api/products/<id>")
+def delete_product(id):
+    if not ObjectId.is_valid(id):
+        return abort(400, "invalid ID")
+
+    db_id = ObjectId(id)
+    result = db.products.delete_one({"_id": db_id})
+    if result.deleted_count == 0:
+        return abort(404, "product not found")
+
+    return json.dumps({"deleted": True})
 
 
 #get /api/reports/total
@@ -155,7 +168,8 @@ def get_coupons():
     cursor = db.coupon.find({})
     for coup in cursor:
         coupons.append(fix_id(coup))
-    return json.dumps(f'{coupons}' )
+    return json.dumps(coupons )
+
 
 @app.post("/api/coupons")
 def save_coupon():
@@ -167,28 +181,39 @@ def save_coupon():
     if "discount" not in coupon:
         return abort(400, 'discount is required')
 
-    if not isinstance(coupon['discount'], (int)):
+    if not isinstance(coupon['discount'], (int, float)):
         return abort(400, 'Discount should be a number')
 
-    if coupon['discount']>40 or coupon['discount']<0:
+    if coupon['discount']>40 or coupon['discount']<1:
         return abort(400, 'Discount invalid')
 
     db.coupon.insert_one(coupon)
 
     return json.dumps(fix_id(coupon))
 
+
 @app.get("/api/coupons/search/<code>")
 def get_coupons_by_code(code = None):
 
-    cursor = db.coupon.find({"code": code})
-    coupons = []
+    coupon = db.coupon.find_one({"code": code})
 
-    for coup in cursor:
-        coupons.append(fix_id(coup))
-
-    return json.dumps(coupons)
+    if coupon  == None:
+        return abort(404, "Coupon not found")
 
 
+    return json.dumps(fix_id(coupon))
+
+@app.delete("/api/coupon/<id>")
+def delete_coupon(id):
+    if not ObjectId.is_valid(id):
+        return abort(400, "invalid ID")
+
+    db_id = ObjectId(id)
+    result = db.coupon.delete_one({"_id": db_id})
+    if result.deleted_count == 0:
+        return abort(404, "Coupon not found")
+
+    return json.dumps({"deleted": True})
 """
 code (required, length > 3)
 discount (required, numbers, greater than zero, lower than 40)

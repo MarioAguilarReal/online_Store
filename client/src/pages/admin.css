@@ -10,8 +10,9 @@ font-family: 'poppins';
     font-size: 89px;
     color: #d6d6d68c;
     /* position: absolute; */
-    margin-left: -15px;
-    top: 46px;
+    left: -15px;
+    position: relative;
+    /* top: 46px; */
     font-family: 'poppins';
     font-weight: 600;
     text-transform: uppercase;
@@ -46,7 +47,7 @@ font-family: 'poppins';
     padding: 10px 20px;
     border: 1px solid #b6b4b4;
     border-radius: 6px;
-    
+
 }
 
 .admin .sections .form-buttons {
@@ -122,7 +123,7 @@ font-family: 'poppins';
     display: flex;
     font-family: 'poppins';
     vertical-align: middle;
-    height: 40px;
+    height: 60px;
 }
 
 .coupon-code>.code{
@@ -133,6 +134,7 @@ font-family: 'poppins';
 
 .coupon-code>.discount{
     flex:2;
+    padding-top: 10px;
 }
 
 
@@ -140,6 +142,11 @@ font-family: 'poppins';
 .coupon-code>.delete{
     flex:1;
 }
+.coupon-code>.delete>.btn{
+    margin-top: 10px;
+    max-height: 30px;
+}
+
 .coupon-code>.delete>.btn>.icon{
     color:white;
 }

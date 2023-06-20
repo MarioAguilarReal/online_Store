@@ -1,32 +1,69 @@
 import './cart.css';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import StoreContext from "../store/storeContext";
 import ProductCart from '../components/productCart';
 import { Link } from 'react-router-dom';
+import DataService from '../services/dataService';
 
 const Cart = (props) => {
     const { cart, getCartCount } = useContext(StoreContext);
-    console.log(cart);
+    const [couponText, setCouponText] = useState([]);
+    const [coupon, setCoupon] = useState(null);
+    const [invalidCoupon, setInvalidCoupon] = useState(false);
+
+
 
 
     const getTotal = () => {
-        //create a total = 0
-        //travel cart, get every product and add to total (proce * quantity)
         let total = 0;
 
         for (let i = 0; i < cart.length; i++) {
             let product = cart[i];
             total += (product.quantity * product.price)
         }
-        console.log(total);
         return total;
     }
 
+
+    const getTotalWithDicount = () => {
+        let total = getTotal();
+
+        if(!coupon){
+            return total;
+        }else{
+            const discount = (coupon.discount/100)*total;
+            total = total - discount;
+
+            return total.toFixed(2);
+
+        }
+    }
+
+
+    const handleApplyCoupon = async () => {
+        const service = new DataService()
+        const couponInfo = await service.getCouponByCode(couponText)
+        if (couponInfo) {
+            setInvalidCoupon(false);
+            setCoupon(couponInfo);
+        } else {
+            setInvalidCoupon(true);
+            setCoupon(null);
+        }
+    }
+
+
+    const handleCouponText = e => {
+        let text = e.target.value
+        setCouponText(text)
+    }
+
+
     if (cart.length === 0) {
-        return(
+        return (
             <div className='no-prod'>
-            <h3>Empty cart</h3>
-            <h4>Please go to <Link to="/catalog">Catalog</Link> and add some product to your backet</h4>
+                <h3>Empty cart</h3>
+                <h4>Please go to <Link to="/catalog">Catalog</Link> and add some product to your backet</h4>
 
             </div>
         );
@@ -42,21 +79,24 @@ const Cart = (props) => {
                     </section>
                     <aside className='pay'>
                         <h4><b>{getCartCount()}</b> Products on the Cart</h4>
-                        <hr/>
+                        <hr />
                         <h4>Total:</h4>
                         <h5>$ {getTotal().toFixed(2)}</h5>
-                        <br/>
+                        <br />
                         <div className='discount'>
-                                <label className='form-label'>Apply coupon code:</label>
+                            <label className='form-label'>Apply coupon code:</label>
+
+                            {invalidCoupon ? <label className='error'>Invalid Code</label> : null}
+
                             <div className='discount-form'>
-                                <input className='form-control' type='text'></input>
-                                <button className='btn btn-sm btn-outline-primary'>Apply</button>
+                                <input className='form-control' type='text' name='code' onBlur={handleCouponText}></input>
+                                <button className='btn btn-sm btn-outline-primary' onClick={handleApplyCoupon}>Apply</button>
                             </div>
                         </div>
-                        <br/>
+                        <br />
                         <h4>Final Total:</h4>
-                        <h5>${getTotal().toFixed(2)}</h5>
-                        <br/>
+                        <h5>${getTotalWithDicount()}</h5>
+                        <br />
                         <button className='btn btn-xl btn-success'>Pay Now</button>
                     </aside>
 

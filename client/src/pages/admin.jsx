@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './admin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DataService from "../services/dataService";
+import Product from './../components/product';
 
 const Admin = () => {
     const [product, setProduct] = useState({});
@@ -9,6 +11,26 @@ const Admin = () => {
     const [coupon, setCoupons] = useState({});
     const [allCoupons, setAllCoupons] = useState([]);
 
+    /**
+    * useEffect call a load products fn
+    * the fn creates an instance of data service
+    * uses the instance to retrive the products
+    * set the products on the all products state var
+    */
+
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    async function loadData() {
+        let service = new DataService();
+        let prods = await service.getProducts();
+        setAllProduct(prods);
+
+        let coups = await service.getCoupons();
+        // console.log(coups)
+        setAllCoupons(coups);
+    }
     const handleTextChange = (e) => {
 
         const name = e.target.name;
@@ -18,7 +40,7 @@ const Admin = () => {
         if (name === 'price') {
             text = parseFloat(text);
         }
-        /** 
+        /**
         *Create a copy
         *Modify the copy
         *Set the copy
@@ -41,12 +63,15 @@ const Admin = () => {
     }
 
     //save product
-    const saveProduct = () => {
-        console.log(product);
+    const saveProduct = async () => {
+        // console.log(product);
+        let service = new DataService();
+        const savedProduct = await service.saveProduct(product);
+        console.log(savedProduct);
 
         //To do : send product to server
-
         //add product to allProducts array
+
         let copy = [...allProducts];
         copy.push(product);
         setAllProduct(copy);
@@ -60,6 +85,24 @@ const Admin = () => {
         setAllCoupons(copy);
     }
 
+    //delete coupon
+    const handleDeleteCoupon = async (id) => {
+        // console.log(id);
+        let service = new DataService();
+        let response = await service.deleteCoupon(id);
+        //
+        let copy = allCoupons.filter(c => c._id !== id);
+        setAllCoupons(copy)
+    }
+
+    const handleDeleteProduct = async id =>{
+        let service = new DataService();
+        let response = await service.deleteProduct(id);
+        console.log(response);
+        let copy = allProducts.filter(p => p._id !== id);
+        // console
+        setAllProduct(copy);
+    }
 
     return (
         <div className='admin'>
@@ -116,7 +159,7 @@ const Admin = () => {
 
                     <ul className='product-list'>
                         {allProducts.map(product =>
-                            <li className='info'>
+                            <li className='info' key={product._id}>
                                 <div className='img-section'>
                                     <img src={product.image} />
                                 </div>
@@ -130,7 +173,7 @@ const Admin = () => {
                                     <p className='prop'><FontAwesomeIcon className="icon" icon="fa-solid fa-gear" /> lbft: {product.lbft} </p>
                                 </div>
                                 <div className='delete-section'>
-                                    <button className='btn btn-sm btn-danger'><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
+                                    <button className='btn btn-sm btn-danger' onClick={()=> handleDeleteProduct(product._id)}><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
 
                                 </div>
                             </li>
@@ -158,15 +201,15 @@ const Admin = () => {
                     </div>
                     <ul className='coupon-list'>
                         {allCoupons.map(coupon =>
-                            <div className='coupon-code'>
+                            <div className='coupon-code' key={coupon._id}>
                                 <div className='code'>
-                                    <p className='code'>Code: {coupon.code}</p>
+                                    <p className='code'>Code:<br/> <b>{coupon.code}</b></p>
                                 </div>
                                 <div className='discount'>
-                                    <p className='discount'>Discount: {coupon.discount.toFixed(2)}%</p>
+                                    <p className='discount'>Discount: <b>{coupon.discount.toFixed(2)}%</b></p>
                                 </div>
                                 <div className='delete'>
-                                    <button className='btn btn-sm btn-danger'><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
+                                    <button className='btn btn-sm btn-danger' onClick={()=> handleDeleteCoupon(coupon._id)}><FontAwesomeIcon className='icon' icon={"fa-solid fa-trash"} />Delete</button>
                                 </div>
                             </div>
                         )}

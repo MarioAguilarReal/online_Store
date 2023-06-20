@@ -10,19 +10,22 @@ const Slider = () => {
   const [allProducts, setallProducts] = useState([])
 
   useEffect(() => {
-    let services = new DataService();
-    let img = services.getProducts();
-    setallProducts(img);
+    loadData();
   })
-
+  const loadData = async()=>{
+    let services = new DataService();
+    let img = await services.getProducts();
+    setallProducts(img);
+  }
 
   return (
     <div id="slider" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div id='sliderItemMain'className="carousel-item active">
-          <h2>Welcome to Mario's Dealer </h2>
+          <img src="logo-icon.png" width="270px"></img>
+          <h2>Find Your <b>Perfect</b> Car</h2>
           <h3>Auto Dealer </h3>
-          <Link className='btn btn-sm button-slider' aria-current="page" to="/catalog">Explore Cars</Link> 
+          <Link className='btn btn-sm button-slider' aria-current="page" to="/catalog">Explore Cars</Link>
         </div>
         {allProducts.map(img => <SliderItem data={img} />)}
       </div>

@@ -12,13 +12,13 @@ const GlobalState = (props) => {
 
         /**
          * Create a found variable = false
-         * a for loop to travel cart 
+         * a for loop to travel cart
          * if there is another product with the same _id as product
-         * update the quantity of the element in the array 
-         * set found to true 
-         * 
-         * 
-         * 
+         * update the quantity of the element in the array
+         * set found to true
+         *
+         *
+         *
          * at the end of the for loop, if found is false
          * push product into cart
          */
@@ -33,18 +33,19 @@ const GlobalState = (props) => {
         if (!found){
             copy.push(prod);
         }
-        
+
         setCart(copy);
-        // console.log(cart)
     }
-    const removeFromCart = () => {
-        console.log('removeFromCart')
+    const removeFromCart = _id => {
+
+        let copy = cart.filter(prod => prod._id !== _id);
+        setCart(copy);
     }
 
     const getCartCount = () => {
         let total = 0;
-        /** 
-         * 
+        /**
+         *
          * create a for and get a product, console log the product
          * from the product get the quantity, cl
          * add quantity to a running total

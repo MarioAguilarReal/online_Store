@@ -23,13 +23,47 @@
 .container-slider>.info-section{
     padding-left: 40px;
     position: relative;
-    top: 50%;
+    top: 20%;
     flex: 2;
     text-align: left;
     display: block;
     color:white;
-    
+
 }
+.container-slider>.info-section>h1{
+    font-size: 60px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+.container-slider>.info-section>p{
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    color: orangered;
+}
+.container-slider>.info-section>p>span{
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+.container-slider>.info-section>h4{
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.container-slider>.info-section>h4>.icon{
+    color:orange;
+    font-size: 25px;
+}
+.container-slider>.info-section>.btn{
+    background-color: orange;
+    border: 0px;
+    border-radius: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 .container-slider>.info-section>.icon{
     color: white !important;
     font-size: 15px;

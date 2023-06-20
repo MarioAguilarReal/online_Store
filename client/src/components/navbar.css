@@ -1,9 +1,13 @@
 .navbar{
-    background-color: rgba(24, 2, 146, 0.918);
+    background-color: rgba(24, 2, 146, 0.922);
     margin-top: 0px;
     padding: 10px;
     color:white;
     font-family: 'poppins';
+    /* position: absolute !important; */
+    width: 100%;
+    top: 0;
+    z-index: 10;
 }
 .navbar h1{
     color:white;
@@ -22,5 +26,5 @@
 }
 
 .navbar .lbl-user i{
-    
+
 }

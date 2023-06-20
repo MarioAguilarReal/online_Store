@@ -1,9 +1,11 @@
 import './about.css';
 
-const About= (props) =>{
-    return(
+const About = (props) => {
+    return (
         <div className="about">
-            <h1>About Us</h1>
+            <div className='hero'>
+                <h1>About Us</h1>
+            </div>
             <h4>Mario Aguilar</h4>
             <h5>mario.real@uabc.edu.mx</h5>
         </div>

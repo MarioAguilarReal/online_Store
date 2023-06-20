@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SliderItem = (props) => {
     let name = props.data.title;
+    let price = props.data.price;
     let img = props.data.image;
     let engine = props.data.engine;
     let hp = props.data.hp;
@@ -22,9 +23,10 @@ const SliderItem = (props) => {
                 </div>
                 <div className='info-section'>
                     <h1>{name}</h1>
-                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-horse-head" /> Hp: {hp}</h4>
-                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-gear" /> Lbft: {lbft}</h4>
-                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-car" /> Engine: {engine}</h4>
+                    <p><span>Start from: $</span> {price.toFixed(2)}</p>
+                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-horse-head" />  Hp: {hp}</h4>
+                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-gear" />  Lbft: {lbft}</h4>
+                    <h4><FontAwesomeIcon className="icon" icon="fa-solid fa-car" />  Engine: {engine}</h4>
                     <Link className='btn btn-primary' aria-current="page" to="/catalog">More Infomation</Link>
                 </div>
             </div>

@@ -13,20 +13,22 @@ const Catalog = () => {
 
     //do something when the component loads
     useEffect(() => {
-        let service = new DataService();
-        let prods = service.getProducts();
-        setAllProducts(prods);
         loadCatalog();
-        setProductsToDisplay(prods);
     }, []);
 
-    const loadCatalog = () => {
-        let categ = ['Sedan', 'Coupe', 'Hatchback', 'SUV'];
+    async function loadCatalog() {
+        let service = new DataService();
+        let prods = await service.getProducts();
+        setAllProducts(prods);
+        setProductsToDisplay(prods);
+
+        // let categ = ['Sedan', 'Coupe', 'Hatchback', 'SUV'];
+        let categ = await service.getCategories();
+
         setCategories(categ);
     }
 
     const funcFilter = filter => {
-        console.log(filter);
         //find the products that match the categories
         //and add to te list
         let list = [];
@@ -34,7 +36,6 @@ const Catalog = () => {
         allProducts.forEach(product => {
             if (product.category === filter) list.push(product)
         });
-        console.log(list);
         setProductsToDisplay(list);
     }
 
